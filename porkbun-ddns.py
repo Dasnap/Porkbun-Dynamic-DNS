@@ -49,8 +49,8 @@ if len(sys.argv)>2: #at least the config and root domain is specified
 
 	print("The domain you want to update is: " + fqdn)
 	if subDomain == "*":
-		print("Looks like you're using a wildcard! I'll check the root domain...")
-		dns_value = socket.gethostbyname(rootDomain)
+		print("Looks like you're using a wildcard! I'll check www...")
+		dns_value = socket.gethostbyname("www." + rootDomain)
 	else:
 		dns_value = socket.gethostbyname(fqdn)
 	print("The current value of that domain is: " + dns_value)
