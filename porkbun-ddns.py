@@ -2,6 +2,7 @@ import json
 import requests
 import re
 import sys
+import socket
 
 def getRecords(domain): #grab all the records so we know which ones to delete to make room for our record. Also checks to make sure we've got the right domain
 	allRecords=json.loads(requests.post(apiConfig["endpoint"] + '/dns/retrieve/' + domain, data = json.dumps(apiConfig)).text)
@@ -45,9 +46,22 @@ if len(sys.argv)>2: #at least the config and root domain is specified
 		myIP=sys.argv[5]
 	else:
 		myIP=getMyIP() #otherwise use the detected exterior IP address
-	
-	deleteRecord()
-	print(createRecord()["status"])
+
+	print("The domain you want to update is: " + fqdn)
+	if subDomain == "*":
+		print("Looks like you're using a wildcard! I'll check the root domain...")
+		dns_value = socket.gethostbyname(rootDomain)
+	else:
+		dns_value = socket.gethostbyname(fqdn)
+	print("The current value of that domain is: " + dns_value)
+
+	print("You want to replace the current value: " + dns_value + " with the new value: " + myIP)
+
+	if dns_value == myIP:
+		print("Looks like that's already its value! Nothing to do...")
+	else:
+		deleteRecord()
+		print(createRecord()["status"])
 	
 else:
 	print("Porkbun Dynamic DNS client, Python Edition\n\nError: not enough arguments. Examples:\npython porkbun-ddns.py /path/to/config.json example.com\npython porkbun-ddns.py /path/to/config.json example.com www\npython porkbun-ddns.py /path/to/config.json example.com '*'\npython porkbun-ddns.py /path/to/config.json example.com -i 10.0.0.1\n")
