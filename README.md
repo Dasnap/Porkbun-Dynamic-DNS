@@ -1,6 +1,6 @@
-# porkbun-dynamic-dns-python [deprecated]
+This is a branch created to serve as a base for a [Docker image.](https://github.com/Dasnap/Porkbun-DDNS-Docker) This has been changed to check the current DNS status of a domain to see if the update can be skipped. 
 
-Please note, this module is now in deprecated status. It is provided as-is as an example of how to use the Porkbun API manage DNS records, but is no longer maintained. Our unofficial recommendation would be to look into <a href="https://github.com/ddclient/ddclient">ddclient</a>, which now supports calls to our API.
+Original README follows:
 
 Our minimalist dynamic DNS client. Compatible with both Python 2 or 3 so it runs on MacOS without any additional software to install, or any other platform that supports Python.
 
