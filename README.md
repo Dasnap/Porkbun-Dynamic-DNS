@@ -1,4 +1,4 @@
-This is a branch created to serve as a base for a [Docker image.](https://github.com/Dasnap/Porkbun-DDNS-Docker) This has been changed to check the current DNS status of a domain to see if the update can be skipped. 
+This is a fork created to serve as a base for a [Docker image.](https://github.com/Dasnap/Porkbun-DDNS-Docker) This has been changed to check the current DNS status of a domain to see if the update can be skipped. 
 
 Original README follows:
 
