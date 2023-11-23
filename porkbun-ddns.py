@@ -47,16 +47,15 @@ if len(sys.argv)>2: #at least the config and root domain is specified
 	else:
 		myIP=getMyIP() #otherwise use the detected exterior IP address
 
+	dns_value = "NULL"
 	print("The domain you want to update is: " + fqdn)
 	if subDomain == "*":
 		print("Looks like you're using a wildcard! I'll check www...")
-		dns_value = "NULL"
 		try:
 			dns_value = socket.gethostbyname("www." + rootDomain)
 		except socket.gaierror:
 			pass
 	else:
-		dns_value = "NULL"
 		try:
 			dns_value = socket.gethostbyname(fqdn)
 		except socket.gaierror:
