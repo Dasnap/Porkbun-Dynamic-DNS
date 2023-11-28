@@ -1,4 +1,4 @@
-This is a fork created to add extra DNS steps. This project has been changed to check the current DNS value of a domain to see if the update can be skipped. A Docker image has also been added based off [this project.](https://github.com/Pavlinchen/Porkbun-DDNS-Docker)
+This is a fork created to add extra DNS steps. This project has been changed to check the current DNS value of a domain to see if the update can be skipped. A [Docker image](https://hub.docker.com/r/dazznap/porkbun-ddns) has also been added based off [this project.](https://github.com/Pavlinchen/Porkbun-DDNS-Docker)
 
 ### Docker Compose
 ```docker
