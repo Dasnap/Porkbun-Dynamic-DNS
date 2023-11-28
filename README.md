@@ -1,5 +1,36 @@
 This is a fork created to add extra DNS steps. This project has been changed to check the current DNS value of a domain to see if the update can be skipped. A Docker image has also been added based off [this project.](https://github.com/Pavlinchen/Porkbun-DDNS-Docker)
 
+### Docker Compose
+```docker
+version: "3"
+services:
+    porkbunddns:
+        image: dazznap/porkbun-ddns
+        container_name: porkbun-ddns
+        restart: always
+        pull_policy: always
+        environment:
+            APIKey: <YourAPIKey>
+            SecretAPIKey: <YourSecretAPIKey>
+            Domain: <YourDomain>
+            Schedule: <YourSchedule (in cron syntax)> #optional
+            TZ: <YourTimezone> #optional
+```
+
+### CLI
+```docker
+docker run -d \
+-e APIKey='<YourAPIKey>' \
+-e SecretAPIKey='<YourSecretAPIKey>' \
+-e Domain='<YourDomain>' \
+-e Schedule='<YourSchedule (cron syntax)>' \
+-e TZ='<YourTimezone>' \
+--pull=always \
+--restart always \
+--name porkbun-ddns \
+dazznap/porkbun-ddns
+```
+
 Original README follows:
 
 Our minimalist dynamic DNS client. Compatible with both Python 2 or 3 so it runs on MacOS without any additional software to install, or any other platform that supports Python.
